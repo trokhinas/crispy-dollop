@@ -20,6 +20,8 @@
 		AED9DC7321CCE4A50050299B /* MutableCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED9DC7221CCE4A50050299B /* MutableCollection.swift */; };
 		AED9DC7521CCE4B20050299B /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED9DC7421CCE4B20050299B /* Int.swift */; };
 		AED9DC7721CCE4BC0050299B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED9DC7621CCE4BC0050299B /* String.swift */; };
+		AED9DC7921CCFD4D0050299B /* BorderStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED9DC7821CCFD4D0050299B /* BorderStatus.swift */; };
+		AED9DC7F21CD091D0050299B /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED9DC7E21CD091D0050299B /* Table.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		AED9DC7221CCE4A50050299B /* MutableCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MutableCollection.swift; sourceTree = "<group>"; };
 		AED9DC7421CCE4B20050299B /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		AED9DC7621CCE4BC0050299B /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		AED9DC7821CCFD4D0050299B /* BorderStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderStatus.swift; sourceTree = "<group>"; };
+		AED9DC7E21CD091D0050299B /* Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,12 +74,12 @@
 		AED9DC4E21CCE1710050299B /* Graphical Set */ = {
 			isa = PBXGroup;
 			children = (
-				AED9DC5B21CCE1760050299B /* Info.plist */,
 				AED9DC6421CCE2BC0050299B /* Library */,
 				AED9DC6321CCE27B0050299B /* Views */,
 				AED9DC6221CCE2670050299B /* Models */,
 				AED9DC6121CCE1E00050299B /* Supporting files */,
 				AED9DC5321CCE1710050299B /* Main.storyboard */,
+				AED9DC5B21CCE1760050299B /* Info.plist */,
 			);
 			path = "Graphical Set";
 			sourceTree = "<group>";
@@ -105,6 +109,7 @@
 			children = (
 				AED9DC5121CCE1710050299B /* ViewController.swift */,
 				AED9DC6821CCE3A90050299B /* SetButton.swift */,
+				AED9DC7E21CD091D0050299B /* Table.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -123,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				AED9DC7021CCE47A0050299B /* Type.swift */,
+				AED9DC7821CCFD4D0050299B /* BorderStatus.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -221,7 +227,9 @@
 				AED9DC6921CCE3A90050299B /* SetButton.swift in Sources */,
 				AED9DC6D21CCE3E40050299B /* SetGame.swift in Sources */,
 				AED9DC6B21CCE3D40050299B /* SetCard.swift in Sources */,
+				AED9DC7F21CD091D0050299B /* Table.swift in Sources */,
 				AED9DC7121CCE47A0050299B /* Type.swift in Sources */,
+				AED9DC7921CCFD4D0050299B /* BorderStatus.swift in Sources */,
 				AED9DC7521CCE4B20050299B /* Int.swift in Sources */,
 				AED9DC5021CCE1710050299B /* AppDelegate.swift in Sources */,
 				AED9DC6F21CCE40B0050299B /* SetCardDeck.swift in Sources */,

@@ -22,9 +22,11 @@ class SetButton: UIButton {
         didSet{drawButton()}
         
     }
+    var borderStatus: BorderStatus = BorderStatus.deselected
     
     
     private func drawButton() {
+        drawBorder()
         if let card = setCard {
             let pictures = drawSymbols(setCard: card)
             setAttributedTitle(pictures, for: UIControlState.normal)
@@ -38,6 +40,7 @@ class SetButton: UIButton {
             layer.borderColor = UIColor.clear.cgColor
             isEnabled = false
         }
+        
     }
     
     private func drawSymbols(setCard: SetCard) -> NSAttributedString {
@@ -55,4 +58,29 @@ class SetButton: UIButton {
         
         return NSAttributedString(string: attrString, attributes: attr)
     }
+    
+    private func drawBorder() {
+        self.layer.borderWidth = 3.0
+        switch borderStatus {
+        case .selected:
+            self.layer.borderColor = BorderColorConstants.select
+        case .hint:
+            self.layer.borderColor = BorderColorConstants.hint
+        case .setMatched:
+            self.layer.borderColor = BorderColorConstants.isSet
+        case .setNotMathced:
+            self.layer.borderColor = BorderColorConstants.notSet
+        default:
+            self.layer.borderColor = BorderColorConstants.deselect
+        }
+    }
+    
+    struct BorderColorConstants {
+        static let select = UIColor.blue.cgColor
+        static let isSet = UIColor.green.cgColor
+        static let notSet = UIColor.red.cgColor
+        static let hint = UIColor.orange.cgColor
+        static let deselect = UIColor.clear.cgColor
+    }
 }
+

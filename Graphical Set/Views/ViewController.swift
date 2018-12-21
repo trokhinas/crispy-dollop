@@ -1,34 +1,8 @@
-////
-////  ViewController.swift
-////  Graphical Set
-////
-////  Created by xcode on 21.12.2018.
-////  Copyright © 2018 VSU. All rights reserved.
-////
-//
-//import UIKit
-//
-//class ViewController: UIViewController {
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        // Do any additional setup after loading the view, typically from a nib.
-//    }
-//
-//    override func didReceiveMemoryWarning() {
-//        super.didReceiveMemoryWarning()
-//        // Dispose of any resources that can be recreated.
-//    }
-//
-//
-//}
-//
-
 //
 //  ViewController.swift
-//  Set
+//  Graphical Set
 //
-//  Created by xcode on 09.11.2018.
+//  Created by xcode on 21.12.2018.
 //  Copyright © 2018 VSU. All rights reserved.
 //
 
@@ -60,13 +34,9 @@ class ViewController: UIViewController {
     @IBAction func HintButton(_ sender: SetButton) {
         var hints = model.hint()
         if(hints.count != 0) {
-            print("hint")
             for i in 0...2 {
                 hintCard(index: model.displayedCards.index(of: hints[i])!)
             }
-        }
-        else {
-            print("no hint")
         }
         updateScore()
     }
@@ -99,14 +69,15 @@ class ViewController: UIViewController {
             print("choosen card is not in cardButton")
         }
     }
+    
+    //-----XCODE GENERATED FUNCTIONS-----//
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateViewFromModel()
+        //updateViewFromModel()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     
@@ -120,6 +91,29 @@ class ViewController: UIViewController {
         }
         checkWinner()
     }
+    private func draw(index: Int) {
+        let button = Cards[index]
+        //проверяем отображается ли эта карта
+        if(index < model.displayedCards.count) {
+            let currentCard = model.displayedCards[index]
+            if(model.selectedCards.contains(currentCard)) {
+                selectCard(index: index)
+            }
+            else if(model.matchedCards.contains(currentCard)) {
+                selectAsSetOrNot(index: index)
+            }
+            else {
+                deselectCard(index: index)
+            }
+            button.setCard = currentCard
+        }
+        else {button.setCard = nil}
+    }
+    
+    
+    
+    //-----LABEL SECTION-----//
+    //-----Она очень тупая и я не знаю как ее красиво убрать-----//
     private func updateButtons() {
         dealButton.isEnabled = !model.deckIsEmpty && !(model.displayedCards.count == Cards.count)
     }
@@ -139,52 +133,30 @@ class ViewController: UIViewController {
             winnerLabel.text = ""
         }
     }
-    private func draw(index: Int) {
-        let button = Cards[index]
-        //проверяем отображается ли эта карта
-        if(index < model.displayedCards.count) {
-            let currentCard = model.displayedCards[index]
-            button.setCard = currentCard
-            if(model.selectedCards.contains(currentCard)) {
-                selectCard(index: index)
-            }
-            else if(model.matchedCards.contains(currentCard)) {
-                selectAsSetOrNot(index: index)
-            }
-            else {
-                deselectCard(index: index)
-            }
-        }
-        else {button.setCard = nil}
-    }
+    
+    //-----BORDER SECTION-----//
+    //-----Она очень тупая и я не знаю как ее красиво убрать-----//
     private func selectCard(index: Int) {
         let button = Cards[index]
-        
-        button.layer.borderWidth = 3.0
-        button.layer.borderColor = selectBorderColor
+        button.borderStatus = BorderStatus.selected
     }
     private func hintCard(index: Int) {
         let button = Cards[index]
-        print("hint: " + String(index))
-        button.layer.borderWidth = 3.0
-        button.layer.borderColor = hintBorderColor
+        button.borderStatus = BorderStatus.hint
+        button.setCard = model.displayedCards[index]
     }
     private func selectAsSetOrNot(index: Int) {
         let button = Cards[index]
-        button.layer.borderWidth = 3.0
-        
         if(model.isSet)! {
-            button.layer.borderColor = setBorderColor
+            button.borderStatus = BorderStatus.setMatched
         }
         else{
-            button.layer.borderColor = notSetBorderColor
+            button.borderStatus = BorderStatus.setNotMathced
         }
     }
     private func deselectCard(index: Int) {
         let button = Cards[index]
-        
-        button.layer.borderWidth = 0.0
-        button.layer.borderColor = UIColor.blue.cgColor
+        button.borderStatus = BorderStatus.deselected
     }
     
     
