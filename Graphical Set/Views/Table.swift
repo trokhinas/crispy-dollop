@@ -9,19 +9,55 @@
 import Foundation
 import UIKit
 
-class Table: UIView {
+class Table: UIView{
+    
+ 
+    var cardViews = [SetCardView](){
+        // ПОСМОТРЕТЬ ЧТО ЭТО!
+        willSet {removeSubviews()}
+        didSet {addSubviews()}
+    }
+    var cardsCount: Int {
+        return cardViews.count
+    }
+    
+    private func removeSubviews(){
+        for card in cardViews {
+            card.removeFromSuperview()
+        }
+    }
+    
+    private func addSubviews() {
+        for card in cardViews{
+            card.addSubview(card)
+        }
+    }
+ 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        var cardsPlacing = Grid(
+            layout: Grid.Layout.aspectRatio(Constant.cellAspectRatio),
+            frame: bounds)
+        //передаем количество ячеек в нашу сетку - количество SetCardView
+        cardsPlacing.cellCount = cardViews.count
+        for row in 0..<cardsPlacing.dimensions.rowCount {
+            for column in 0..<cardsPlacing.dimensions.columnCount {
+                if cardViews.count > (row * cardsPlacing.dimensions.columnCount + column) {
+                    
+                    cardViews[row * cardsPlacing.dimensions.columnCount + column].frame = cardsPlacing[row,column]!.insetBy(
+                        dx: Constant.spacingDx, dy: Constant.spacingDy)
+                }
+            }
+        }
+    }
+    
+    struct Constant {
+        static let cellAspectRatio: CGFloat = 0.7
+        static let spacingDx: CGFloat  = 3.0
+        static let spacingDy: CGFloat  = 3.0
+    }
     
     override func draw(_ rect: CGRect) {
-        let roundRect = UIBezierPath(roundedRect: bounds, cornerRadius: 16)
-        roundRect.addClip()
-        
-        UIColor.white.setFill()
-        roundRect.fill()
-        
-        let circlePath = UIBezierPath(arcCenter: CGPoint(x: rect.midX, y:rect.midY), radius: CGFloat(199), startAngle: CGFloat(0), endAngle:CGFloat(Double.pi * 2), clockwise: true)
-        
-        UIColor.black.setFill()
-        circlePath.fill()
-        
+        layoutSubviews()
     }
 }

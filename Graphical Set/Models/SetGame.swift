@@ -59,6 +59,9 @@ class SetGame  {
     var selectedCards = [SetCard]()
     var matchedCards = [SetCard]()
     var removedCards = [SetCard]()
+    var cardsModelCount: Int {
+        return displayedCards.count
+    }
     
     init() {
         print("initial cards: /n")
@@ -174,7 +177,7 @@ class SetGame  {
         //ОТВРАТИТЕЛЬНО!
         if (isSetParam(param1: card1.fill, param2: card2.fill, param3: card3.fill)) {
             if (isSetParam(param1: card1.color, param2: card2.color, param3: card3.color)) {
-                if (isSetParam(param1: card1.number, param2: card2.number, param3: card3.number)) {
+                if (isSetParam(param1: card1.count, param2: card2.count, param3: card3.count)) {
                     if (isSetParam(param1: card1.symbol, param2: card2.symbol, param3: card3.symbol)) {
                         return true
                     }

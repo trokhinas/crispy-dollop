@@ -25,14 +25,23 @@
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ku5-69-vPQ">
                                         <rect key="frame" x="0.0" y="0.0" width="109" height="30"/>
                                         <state key="normal" title="Hint"/>
+                                        <connections>
+                                            <action selector="HintButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OU5-b1-pna"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1pI-Fg-wtA">
                                         <rect key="frame" x="117" y="0.0" width="109" height="30"/>
                                         <state key="normal" title="New Game"/>
+                                        <connections>
+                                            <action selector="NewGameButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Zp-Lx-IqH"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0C-dl-Vhi">
                                         <rect key="frame" x="234" y="0.0" width="109" height="30"/>
                                         <state key="normal" title="+3 Cards"/>
+                                        <connections>
+                                            <action selector="deal3CardsButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FX0-DV-M1V"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -62,7 +71,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a2B-j9-bne" customClass="Table" customModule="Graphical_Set" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a2B-j9-bne" customClass="Table" customModule="Graphical_Set">
                                 <rect key="frame" x="16" y="72" width="343" height="619"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -91,6 +100,7 @@
                         <outlet property="ScoreLabel" destination="ghL-cJ-yfZ" id="bni-QU-OJP"/>
                         <outlet property="cardsInDeck" destination="1U1-y9-hjH" id="KvR-Sh-rKf"/>
                         <outlet property="dealButton" destination="P0C-dl-Vhi" id="NHF-cS-cbL"/>
+                        <outlet property="gameTable" destination="a2B-j9-bne" id="wjx-wr-LRG"/>
                         <outlet property="hintButton" destination="ku5-69-vPQ" id="1rk-dZ-yEd"/>
                         <outlet property="newGameButton" destination="1pI-Fg-wtA" id="G04-He-82p"/>
                         <outlet property="winnerLabel" destination="uAL-GC-o2F" id="xae-4j-eib"/>
